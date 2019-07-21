@@ -1,7 +1,8 @@
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-  console.log(msg);
   if (msg.text === 'gecko655/remove-docbase-sidebar') {
-    $('.js-main-menu').remove();
+    const targetElement = $('.main-layout__menu')
+    targetElement.toggle();
+    targetElement.css('width', (targetElement.is(":visible")? '230px': '0px'));
     window.dispatchEvent(new Event('resize'));
   }
 });
